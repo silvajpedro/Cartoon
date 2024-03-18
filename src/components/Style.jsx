@@ -130,6 +130,10 @@ ${DisplayFlexCustom({align:"flex-start"})}
   border:solid red;
   width: 34vw;
   height: 54vh;
+  p{
+    font-size: 2vw;
+    color: #edd820;
+  }
 `
 export const LiveBox = styled.figure`
 ${DisplayFlexCustom}

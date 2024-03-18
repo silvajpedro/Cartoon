@@ -5,7 +5,9 @@ import { HiArrowCircleLeft, HiArrowCircleRight } from "react-icons/hi";
 
 
 export default function NukaCarousel({ index }) {
+
   const [data, setData] = useState([]);
+  const [hora, setHora] = useState(new Date().toLocaleTimeString("pt-BR"));
 
   const PullData = async () => {
     const Data = await axios.get(
@@ -58,6 +60,8 @@ export default function NukaCarousel({ index }) {
 
   const CartoonsData = (item) =>{
     
+    let horas = ["08-09h","09-10h","10-11h","11-12h","12-13h","13-14h"]
+
     let imageUrl
     
     if(item.id === 1){
@@ -83,7 +87,7 @@ export default function NukaCarousel({ index }) {
           <h1>{item.title}</h1> */}
           <S.InfoCartoon>
             <S.LiveBox>
-                {index+1 === item.id ? <img src="/live.gif" alt="" />: ""}
+                {index+1 === item.id ? <img src="/live.gif" alt="" />: <p>{item.id + 1}h - {item.id + 2 === 25 ? "01":item.id+2}h</p>}
             </S.LiveBox>
           </S.InfoCartoon>
         </S.CartoonsHour>
