@@ -18,6 +18,8 @@ export const GlobalStyle = createGlobalStyle`
       &:hover{
         opacity: 0.5;
       }
+      border-radius:100%;
+      height: 13vh;
     }
 `;
 
@@ -73,10 +75,10 @@ export const CharactersSection = styled.section`
 `;
 
 export const CartoonsHourSection = styled.section`
-  ${DisplayFlexCustom({ justify:"flex-start"})}
+  ${DisplayFlexCustom({ justify: "flex-start" })}
   flex-direction: column;
   background-color: #211921;
-  height: 90vh;
+  height: 95vh;
 `;
 
 export const CartoonsTitle = styled.h2`
@@ -85,66 +87,93 @@ export const CartoonsTitle = styled.h2`
   margin-top: 5vh;
 `;
 
-
 // ---------------- Slider Carrosel--------------//
 
 export const Carrosel = styled(Carousel)`
   /* border: solid red; */
-`
+`;
 
 export const CarroselBox = styled.section`
-/* border: solid green; */
-${DisplayFlexCustom}
-`
+  /* border: solid green; */
+  ${DisplayFlexCustom}
+`;
 
 export const CartoonsHour = styled.div`
-${DisplayFlexCustom({justify:"space-evenly"})}
-margin-top: 2vh;
-background-color: #31303094;
-height: 70vh;
-width: 68vw;
-border-radius: 20px;
-outline: solid #edd820;
-margin: 30px;
-img{
-  width: 30vw;
-  height: 10vh;
-}
+  ${DisplayFlexCustom({ justify: "space-evenly" })}
+  margin-top: 2vh;
+  background-color: #191919;
+  height: 74vh;
+  width: 68vw;
+  border-radius: 20px;
+  outline: solid #edd820;
+  margin: 30px;
+  img {
+    width: 30vw;
+    height: 10vh;
+  }
 `;
 
 export const CardCartoon = styled.figure`
-border: solid green;
-height: 62vh;
-width: 22vw;
-background-size: 100% 100%;
-background-repeat: no-repeat;
-background-position: center;
-border-radius: 20px;
-border: solid #edd820;
-outline: solid 5px #211921;
-margin-top: 4vh;
-margin-left: 3vw;
-`
+  height: 68vh;
+  width: 22vw;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 20px;
+  outline: solid 5px #000000;
+  margin-top: 1vh;
+  margin-left: 3vw;
+`;
 export const InfoCartoon = styled.div`
-${DisplayFlexCustom({align:"flex-start"})}
-  border:solid red;
-  width: 34vw;
-  height: 54vh;
-  p{
-    font-size: 2vw;
+  ${DisplayFlexCustom({ align: "center", justify:"flex-start" })}
+  flex-direction: column;
+  border: solid black;
+  background-color: #302e30;
+  border-radius: 20px;
+  width: 30vw;
+  height: 69vh;
+  p {
+    font-size: 1.8vw;
     color: #edd820;
   }
-`
+`;
+
 export const LiveBox = styled.figure`
+  ${DisplayFlexCustom}
+  margin-top: 2vh;
+  border: solid;
+  width: 16vw;
+  height: 7.5vh;
+  border-radius: 40px;
+  background-color: #191919;
+  img {
+    width: 12vw;
+  }
+`;
+
+export const CartoonInfoText = styled.p`
+  margin-top: 4vh;
+  background-color:#191919;
+  padding: 14px;
+  border-radius: 30px;
+  width: 85%;
+  border: solid 3px black;
+`
+export const WatchButton = styled.a`
+margin-top: 4vh;
+width: 12vw;
+height: 7vh;
+font-size: 1.8vw;
+text-decoration: none;
+color: #edd820;
 ${DisplayFlexCustom}
-margin-top: 2vh;
-border: solid;
-width: 16vw;
-height: 7.5vh;
-border-radius: 40px;
 background-color: #191919;
-img{
-  width: 12vw;
+border:solid black;
+border-radius: 20px;
+pointer-events: ${(props)=> props.pointer };
+opacity: ${(props)=>props.opacity};
+&:hover{
+  opacity: 0.5;
 }
 `
 // ---------------- FOOTER --------------------//
