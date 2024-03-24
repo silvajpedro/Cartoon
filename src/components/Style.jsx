@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
+import { IoCloseCircle } from "react-icons/io5";
 import Carousel from "nuka-carousel";
 
 export const GlobalStyle = createGlobalStyle`
@@ -18,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
       &:hover{
         opacity: 0.5;
       }
-      border-radius:100%;
+  
       height: 13vh;
     }
 `;
@@ -83,14 +84,18 @@ export const CartoonsHourSection = styled.section`
 
 export const CartoonsTitle = styled.h2`
   color: #edd820;
-  font-size: 2.8vw;
-  margin-top: 5vh;
+  font-size: 2.85vw;
+  margin-top: 4.5vh;
+  font-family: "Fredoka", sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
 `;
 
 // ---------------- Slider Carrosel--------------//
 
 export const Carrosel = styled(Carousel)`
   /* border: solid red; */
+  font-family: "Nunito", sans-serif;
 `;
 
 export const CarroselBox = styled.section`
@@ -125,7 +130,7 @@ export const CardCartoon = styled.figure`
   margin-left: 3vw;
 `;
 export const InfoCartoon = styled.div`
-  ${DisplayFlexCustom({ align: "center", justify:"flex-start" })}
+  ${DisplayFlexCustom({ align: "center", justify: "flex-start" })}
   flex-direction: column;
   border: solid black;
   background-color: #302e30;
@@ -153,27 +158,52 @@ export const LiveBox = styled.figure`
 
 export const CartoonInfoText = styled.p`
   margin-top: 4vh;
-  background-color:#191919;
-  padding: 14px;
+  background-color: #191919;
+  padding: 13px;
   border-radius: 30px;
-  width: 85%;
+  width: 90%;
   border: solid 3px black;
-`
-export const WatchButton = styled.a`
-margin-top: 4vh;
-width: 12vw;
-height: 7vh;
-font-size: 1.8vw;
-text-decoration: none;
-color: #edd820;
-${DisplayFlexCustom}
-background-color: #191919;
-border:solid black;
-border-radius: 20px;
-pointer-events: ${(props)=> props.pointer };
-opacity: ${(props)=>props.opacity};
-&:hover{
-  opacity: 0.5;
-}
-`
+`;
+export const WatchButton = styled.button`
+  margin-top: 4vh;
+  width: 12vw;
+  height: 7vh;
+  font-size: 1.8vw;
+  text-decoration: none;
+  color: #edd820;
+  ${DisplayFlexCustom}
+  background-color: #191919;
+  border: solid black;
+  border-radius: 20px;
+  cursor: ${(props) => props.pointer};
+  opacity: ${(props) => props.opacity};
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
+export const IframeCartoon = styled.iframe`
+  position: absolute;
+  width: 67vw;
+  height: 73vh;
+  border-radius: 20px;
+  border: none;
+`;
+export const BoxCloseButton = styled.div`
+  position: absolute;
+  top: -1.2vh;
+  ${DisplayFlexCustom({align:"flex-start", justify: "flex-end" })}
+  width: 73vw;
+`;
+
+export const CloseButton = styled(IoCloseCircle)`
+width: 5.4vw;
+color:   #000000;
+cursor: pointer;
+background-image: url("https://i.pinimg.com/736x/2b/34/02/2b3402b56e906915d61f69671986dce3.jpg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: 35%;
+`;
+
 // ---------------- FOOTER --------------------//

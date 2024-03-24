@@ -6,7 +6,8 @@ import cartoons_info from "./cartoons.json";
 
 export default function NukaCarousel({ index }) {
   const [data, setData] = useState([]);
-  const [hora, setHora] = useState(new Date().toLocaleTimeString("pt-BR"));
+  const [isOpen, setIsOpen] = useState(false);
+  const [openButton, setOpenButton] = useState(false);
 
   const PullData = async () => {
     const Data = await axios.get(
@@ -18,6 +19,14 @@ export default function NukaCarousel({ index }) {
   useEffect(() => {
     PullData();
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        setOpenButton(!openButton);
+      }, 1000);
+    }
+  }, [isOpen]);
 
   const Carrosel = {
     width: "82vw",
@@ -78,34 +87,60 @@ export default function NukaCarousel({ index }) {
     }
 
     return (
-      <S.CarroselBox>
-        <S.CartoonsHour>
-          <S.CardCartoon
-            style={{ backgroundImage: `url(${imageUrl})` }}
-          ></S.CardCartoon>
-          <S.InfoCartoon>
-            <S.LiveBox>
-              {index + 1 === item.id ? (
-                <img src="/live.gif" alt="" />
-              ) : (
-                <p>
-                  {item.id + 1}h - {item.id + 2 === 25 ? "01" : item.id + 2}h
-                </p>
-              )}
-            </S.LiveBox>
-            <S.CartoonInfoText>
-              "{item.title}"- {cartoons_info[item.id - 1]?.cartoon_sinopse}
-            </S.CartoonInfoText>
-            <S.WatchButton
-              opacity={index + 1 === item.id ? 1:0.6}
-              pointer={index + 1 === item.id ? "auto" : "none"}
-              href={cartoons_info[item.id - 1].cartoon_link}
-              target="_blank">
-              Watch Now
-            </S.WatchButton>
-          </S.InfoCartoon>
-        </S.CartoonsHour>
-      </S.CarroselBox>
+      <>
+        <S.CarroselBox>
+          <S.CartoonsHour>
+            <S.CardCartoon
+              style={{ backgroundImage: `url(${imageUrl})` }}
+            ></S.CardCartoon>
+            <S.InfoCartoon>
+              <S.LiveBox>
+                {index + 1 === item.id ? (
+                  <img src="/live.gif" alt="" />
+                ) : (
+                  <p>
+                    {item.id + 1}h - {item.id + 2 === 25 ? "01" : item.id + 2}h
+                  </p>
+                )}
+              </S.LiveBox>
+              <S.CartoonInfoText>
+                "{item.title}"- {cartoons_info[item.id - 1]?.cartoon_sinopse}
+              </S.CartoonInfoText>
+              <S.WatchButton
+                onClick={() => setIsOpen(!isOpen)}
+                opacity={index + 1 === item.id ? 1 : 0.6}
+                disabled={index + 1 === item.id ? false:true}
+                pointer={index + 1 === item.id ? "pointer":"not-allowed"}
+              >
+                Watch Now
+              </S.WatchButton>
+            </S.InfoCartoon>
+            {isOpen && index + 1 === item.id ? (
+              <S.IframeCartoon
+                src={cartoons_info[item.id - 1]?.cartoon_iframe}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></S.IframeCartoon>
+            ) : (
+              ""
+            )}
+          </S.CartoonsHour>
+
+          {openButton && isOpen && index + 1 === item.id ? (
+            <S.BoxCloseButton>
+              <S.CloseButton
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                  setOpenButton(!openButton);
+                }}
+              />
+            </S.BoxCloseButton>
+          ) : (
+            ""
+          )}
+        </S.CarroselBox>
+      </>
     );
   };
 

@@ -173,5 +173,3 @@ export default function Main() {
     </>
   );
 }
-
-// 0, 2(substituir),5, 13, 21
